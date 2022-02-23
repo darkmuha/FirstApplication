@@ -6,50 +6,62 @@
     android:layout_height="fill_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
+
     <LinearLayout
+        android:id="@+id/main_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:background="@drawable/custom_text"
+        android:orientation="vertical"
         android:padding="100dp"
-        android:id="@+id/main_text">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="20dp"
-        android:id="@+id/day_count"
-        android:text="@string/day_count"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        android:textColor="@color/black"
+        android:layout_marginBottom="40dp">
 
-        />
+        <TextView
+            android:id="@+id/day_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/day_count"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="36sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="100dp"
-        android:paddingTop="5dp"
-        android:id="@+id/last_clicked"
-        android:text="@string/last_clicked"
-        android:textAlignment="center"
-        android:textSize="22sp"
-        android:textColor="@color/black"
-        />
+        <TextView
+            android:id="@+id/last_clicked"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="100dp"
+            android:text="@string/last_clicked"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/best"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/best"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+
+            />
     </LinearLayout>
+
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="25dp"
-        android:textColor="@color/black"
-        android:background="@drawable/custom_button"
-        android:layout_marginTop="80dp"
-        android:id="@+id/btn"
-        android:text="@string/reset_btn"
-        android:fontFamily="sans-serif"
-        android:textSize="32sp"
         android:layout_below="@+id/main_text"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/custom_button"
+        android:fontFamily="sans-serif"
+        android:padding="25dp"
+        android:text="@string/reset_btn"
+        android:textColor="@color/black"
+        android:textSize="32sp"
+        android:layout_centerVertical="true"
+        />
 
 
 

@@ -2,5 +2,6 @@
     <string name="app_name">FirstApplication</string>
     <string name="reset_btn">Reset</string>
     <string name="last_clicked">Last Clicked</string>
-    <string name="day_count">Day Count</string>
+    <string name="day_count">Days: 0</string>
+    <string name="best">Best: 0</string>
 </resources>
