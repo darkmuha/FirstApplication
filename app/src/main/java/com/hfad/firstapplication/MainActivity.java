@@ -12,19 +12,15 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    TextView lastClicked;
-    TextView dayCount;
-    Button btn;
-    double date;
-    double oldDate;
-    String data;
+
 
     @Override
     public void onClick(View v) {
-                lastClicked.setText(data);
-                oldDate = date;
+
     }
 
     @Override
@@ -32,21 +28,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        lastClicked = findViewById(R.id.last_clicked);
 
-        btn = findViewById(R.id.btn);
-        btn.setOnClickListener(this);
-
-        lastClicked = (TextView) findViewById(R.id.last_clicked);
-        date = System.currentTimeMillis();
-        SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy");
-        data = sdf.format(date);
-        oldDate = 0F;
-
-        dayCount = (TextView) findViewById(R.id.day_count);
-        double difference = date - oldDate;
-        double data1 = Math.floor(difference/86400000F);
-        String diffDisplay = String.valueOf(data1);
-        dayCount.setText(diffDisplay);
     }
 }
