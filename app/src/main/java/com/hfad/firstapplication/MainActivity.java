@@ -2,6 +2,7 @@ package com.hfad.firstapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -28,19 +29,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView day_count, best, last_clicked;
     private Button btn;
-    private List<Date> listOfDates = new ArrayList<>();
+    private Date oldDate = null;
     private List<Integer> listOfDays = new ArrayList<>();
     private Date date = new Date();
-    private SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy");
+    private SimpleDateFormat sdf = new SimpleDateFormat("dd MM yyyy");
     private int day_count_int;
 
 
     @Override
     public void onClick(View v) {
         last_clicked.setText(sdf.format(date));
-        listOfDates.add(date);
+        oldDate = date;
         try {
-            listOfDays.add(Integer.parseInt(day_count.toString().substring(6)));
+            listOfDays.add(Integer.parseInt(day_count.getText().toString().substring(6)));
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
@@ -60,28 +61,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn.setOnClickListener(this);
 
         Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                try {
-                    day_count.setText(differenceOfDays());
-//                    best.setText(String.valueOf(Collections.max(listOfDays)));
-                } catch (ParseException e) {
-                    e.printStackTrace();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    try {
+                        day_count.setText(differenceOfDays());
+                        if(listOfDays.size() != 0) {
+                            best.setText("Best: " + String.valueOf(Collections.max(listOfDays)));
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
-        }, 0, 1000);
-
+            }, 0, 1000);
 
     }
 
     public String differenceOfDays() throws ParseException {
-        if(listOfDates.isEmpty()) {
+        if(oldDate == null) {
            return "Days: 0";
         }
-        long diff;
-        diff = date.getTime() - listOfDates.get(listOfDates.size()-1).getTime();
-
+        long diff = date.getTime() - oldDate.getTime();
         return ("Days: " + (TimeUnit.MILLISECONDS.toDays(diff)));
     }
 }
